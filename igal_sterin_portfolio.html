@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  PAGE TITLE — edit this text                                    ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<title>Igal Sterin — Scientist & Researcher</title>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  FONTS — do not change unless you want a different typeface     ║
+     ║  Cormorant Garamond = serif body/headings                       ║
+     ║  Space Mono = monospace labels/tags                             ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ══════════════════════════════════════════════════════════════════════
+   COLOUR PALETTE  ← change these variables to retheme the whole site
+   ══════════════════════════════════════════════════════════════════════
+   --ink     = main text colour on light backgrounds
+   --cream   = light background / text on dark backgrounds
+   --pale    = slightly darker cream, used for alt sections
+   --accent  = primary blue (section labels, links, borders)
+   --accent2 = lighter cyan (hero tag, stats, journal names)
+   --muted   = grey for secondary text
+   --line    = subtle border colour
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  --ink:    #0a0a0f;
+  --cream:  #f5f0e8;
+  --pale:   #ede8de;
+  --accent: #2a5c8a;
+  --accent2:#7ab5c8;
+  --muted:  #8a8070;
+  --line:   rgba(10,10,15,0.12);
+}
+
+/* ── FORMATTING: do not edit ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   BODY / GLOBAL TYPE
+   font-size: base size for body text (18px)
+   line-height: spacing between lines (1.7)
+   ══════════════════════════════════════════════════════════════════════ */
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif; /* ← body font */
+  font-size: 18px;       /* ← base text size */
+  line-height: 1.7;      /* ← line spacing */
+  overflow-x: hidden;
+}
+
+/* ── FORMATTING: subtle grain texture overlay, do not edit ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   NAV BAR
+   background: dark overlay colour
+   padding: top/bottom left/right spacing
+   ══════════════════════════════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 3rem;                    /* ← nav height / side padding */
+  background: rgba(12,17,24,0.95);         /* ← nav background colour */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(122,181,200,0.1);
+}
+
+/* ── FORMATTING: nav logo link wrapper ── */
+.nav-logo { text-decoration: none; display: flex; align-items: center; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   NAV LINKS  (About, Experience, Skills…)
+   font-size: size of nav link text
+   color: dimmed cream at rest; brightens on hover
+   ══════════════════════════════════════════════════════════════════════ */
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;               /* ← nav link font size */
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.45);    /* ← nav link colour (dimmed) */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); } /* ← hover colour */
+
+/* ── FORMATTING: light-mode nav overrides (currently unused) ── */
+nav.light { background: rgba(12,17,24,0.95); border-bottom: 1px solid rgba(122,181,200,0.1); }
+nav.light .nav-logo { color: var(--cream); }
+nav.light .nav-links a { color: rgba(245,240,232,0.45); }
+nav.light .nav-links a:hover { color: var(--cream); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   HERO SECTION
+   background: dark colour of the hero panel
+   gap: space between the logo lockup and the bio paragraph below it
+   ══════════════════════════════════════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #0c1118;   /* ← hero background colour */
+  gap: 3rem;             /* ← gap between logo and bio text */
+}
+
+/* ── FORMATTING: hero content wrapper, do not edit ── */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 4rem 4rem 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── FORMATTING: unused hero elements from old layout, do not edit ── */
+.hero-tag { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent2); margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.8s 0.2s forwards; }
+.hero-name { font-size:clamp(3.5rem,6vw,6rem); font-weight:300; line-height:0.95; letter-spacing:-0.02em; margin-bottom:0.4rem; opacity:0; animation:fadeUp 0.9s 0.4s forwards; color:var(--cream); }
+.hero-name em { font-style:italic; color:var(--accent2); }
+.hero-subtitle { font-size:1.3rem; font-weight:300; color:rgba(245,240,232,0.45); font-style:italic; margin-bottom:2.5rem; opacity:0; animation:fadeUp 0.9s 0.6s forwards; }
+.hero-bio { font-size:1.05rem; font-weight:300; color:rgba(245,240,232,0.6); max-width:420px; line-height:1.85; margin-bottom:3rem; opacity:0; animation:fadeUp 0.9s 0.8s forwards; }
+.hero-ctas { display:flex; gap:1.2rem; align-items:center; opacity:0; animation:fadeUp 0.9s 1s forwards; }
+.btn-primary { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink); background:var(--cream); padding:0.85rem 1.8rem; text-decoration:none; transition:background 0.2s,transform 0.2s; }
+.btn-primary:hover { background:var(--accent2); transform:translateY(-2px); }
+.btn-secondary { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream); text-decoration:none; border-bottom:1px solid rgba(245,240,232,0.4); padding-bottom:2px; transition:color 0.2s,border-color 0.2s; }
+.btn-secondary:hover { color:var(--accent2); border-color:var(--accent2); }
+.hero-right { position:relative; overflow:hidden; }
+.hero-graphic { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; animation:fadeIn 1.2s 0.5s forwards; }
+.hero-graphic svg { width:100%; height:100%; opacity:0.12; }
+.hero-accent-block { position:absolute; bottom:0; right:0; width:60%; height:55%; background:var(--accent); opacity:0.07; }
+.hero-vertical-text { position:absolute; right:2.5rem; top:50%; transform:translateY(-50%) rotate(90deg); transform-origin:center; font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.4em; text-transform:uppercase; color:var(--muted); opacity:0; animation:fadeIn 1s 1.2s forwards; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   SECTION SCAFFOLDING (shared by About, Experience, Skills etc.)
+   padding: top/bottom left/right spacing inside each section
+   max-width: maximum content width
+   ══════════════════════════════════════════════════════════════════════ */
+section { padding: 7rem 3rem; position: relative; }   /* ← section padding */
+.section-inner { max-width: 1100px; margin: 0 auto; } /* ← content max width */
+
+/* ══════════════════════════════════════════════════════════════════════
+   SECTION LABELS  (small uppercase text above headings e.g. "About")
+   font-size: size of label text
+   color: uses --accent variable
+   ══════════════════════════════════════════════════════════════════════ */
+.section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;       /* ← label font size */
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);     /* ← label colour → set in palette above */
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after { content:''; flex:1; height:1px; background:var(--line); max-width:60px; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   SECTION TITLES  (large headings e.g. "At the frontier of discovery")
+   font-size: clamp(min, preferred, max) — scales with viewport
+   em tag inside titles uses --accent colour
+   ══════════════════════════════════════════════════════════════════════ */
+.section-title {
+  font-size: clamp(2.5rem, 4vw, 3.8rem); /* ← heading size range */
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 3.5rem;
+}
+.section-title em { font-style: italic; color: var(--accent); } /* ← italic accent word colour */
+
+/* ══════════════════════════════════════════════════════════════════════
+   ABOUT SECTION
+   background: pale cream
+   about body text: font-size 1.15rem, colour #3a3530
+   stat numbers: large italic blue numbers
+   ══════════════════════════════════════════════════════════════════════ */
+#about { background: var(--pale); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.about-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:5rem; align-items:start; }
+.about-body p {
+  font-size: 1.15rem;   /* ← about body text size */
+  font-weight: 300;
+  line-height: 1.9;
+  color: #3a3530;       /* ← about body text colour */
+  margin-bottom: 1.5rem;
+}
+.about-body p:last-child { margin-bottom: 0; }
+.about-stats { display:flex; flex-direction:column; gap:2rem; padding-top:0.5rem; }
+.stat-item { border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+.stat-num {
+  font-size: 3rem;        /* ← stat number size */
+  font-weight: 300;
+  line-height: 1;
+  color: var(--accent);   /* ← stat number colour */
+  font-style: italic;
+}
+.stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;     /* ← stat label size */
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);    /* ← stat label colour */
+  margin-top: 0.3rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   EXPERIENCE SECTION
+   exp-title: job title font size
+   exp-org: organisation name (monospace, accent colour)
+   exp-bullets: bullet point text size and colour
+   ══════════════════════════════════════════════════════════════════════ */
+#experience { background: var(--cream); }
+.exp-list { display:flex; flex-direction:column; gap:0; }
+.exp-item { display:grid; grid-template-columns:180px 1fr; gap:2rem; padding:2.5rem 0; border-top:1px solid var(--line); transition:background 0.2s; cursor:default; }
+.exp-item:last-child { border-bottom: 1px solid var(--line); }
+.exp-item:hover { background: rgba(42,92,138,0.03); }
+.exp-year {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;   /* ← date/type label size */
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  padding-top: 0.35rem;
+  line-height: 1.6;
+}
+.exp-content {}
+.exp-title {
+  font-size: 1.35rem;   /* ← job title size */
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.exp-org {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;   /* ← organisation name size */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent); /* ← organisation name colour */
+  margin-bottom: 1rem;
+}
+.exp-bullets { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+.exp-bullets li {
+  font-size: 1rem;      /* ← bullet point text size */
+  font-weight: 300;
+  color: #3a3530;       /* ← bullet point text colour */
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.7;
+}
+.exp-bullets li::before { content:'—'; position:absolute; left:0; color:var(--accent2); font-size:0.8rem; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   SKILLS SECTION
+   background: cream (light)
+   skill-card-title: category heading (monospace, accent)
+   skill-tag: individual skill pill text size and colour
+   ══════════════════════════════════════════════════════════════════════ */
+#skills { background: var(--cream); color: var(--ink); }
+#skills .section-label { color: var(--accent); }
+#skills .section-title { color: var(--ink); }
+#skills .section-title em { color: var(--accent); }
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5px; background:var(--line); border:1px solid var(--line); }
+.skill-card { background:var(--cream); padding:2rem; transition:background 0.25s; }
+.skill-card:hover { background: var(--pale); }
+.skill-card-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;   /* ← skill category title size */
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent); /* ← skill category title colour */
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+.skill-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.skill-tag {
+  font-size: 0.88rem;               /* ← skill tag text size */
+  font-weight: 300;
+  color: #3a3530;                   /* ← skill tag text colour */
+  background: rgba(10,10,15,0.04);  /* ← skill tag background */
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--line);
+  line-height: 1.4;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   PUBLICATIONS SECTION
+   pub-title: paper title font style (italic)
+   pub-authors: author list colour (muted)
+   pub-journal: journal name (monospace, accent2)
+   ══════════════════════════════════════════════════════════════════════ */
+#publications { background: var(--pale); border-top: 1px solid var(--line); }
+.pub-list { display:flex; flex-direction:column; gap:1px; }
+.pub-item { background:var(--cream); padding:2rem; border-left:3px solid transparent; transition:border-color 0.2s,background 0.2s; }
+.pub-item:hover { border-left-color:var(--accent); background:#f8f4ec; }
+.pub-year {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;    /* ← publication year label size */
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.pub-title {
+  font-size: 1.1rem;    /* ← publication title size */
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+.pub-authors {
+  font-size: 0.88rem;   /* ← author list size */
+  font-weight: 300;
+  color: var(--muted);  /* ← author list colour */
+  line-height: 1.5;
+}
+.pub-journal {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;    /* ← journal name size */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent2);/* ← journal name colour */
+  margin-top: 0.5rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   EDUCATION SECTION
+   edu-degree: degree name (large italic)
+   edu-field: field of study (accent colour)
+   edu-school: institution name (monospace, muted)
+   ══════════════════════════════════════════════════════════════════════ */
+#education { background: var(--cream); }
+.edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+.edu-card { background:var(--pale); padding:2.5rem; border-top:3px solid var(--accent); transition:transform 0.2s; }
+.edu-card:hover { transform: translateY(-4px); }
+.edu-degree {
+  font-size: 1.5rem;    /* ← degree name size */
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+.edu-field {
+  font-size: 1rem;      /* ← field of study size */
+  font-weight: 300;
+  color: var(--accent); /* ← field of study colour */
+  margin-bottom: 0.8rem;
+}
+.edu-school {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;   /* ← institution name size */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.edu-year {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;    /* ← year range size */
+  color: var(--accent2);
+  margin-top: 0.4rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   CONTACT SECTION
+   background: dark (matches hero)
+   contact-heading: large italic heading
+   contact-sub: subtitle text
+   contact-link: button-style links
+   ══════════════════════════════════════════════════════════════════════ */
+#contact { background: #0c1118; color: var(--cream); text-align: center; padding: 8rem 3rem; }
+#contact .section-label { color: var(--accent2); justify-content: center; }
+#contact .section-label::after { display: none; }
+.contact-heading {
+  font-size: clamp(3rem, 6vw, 5.5rem); /* ← contact heading size */
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.contact-sub {
+  font-size: 1.1rem;                  /* ← contact subheading size */
+  font-weight: 300;
+  color: rgba(245,240,232,0.55);      /* ← contact subheading colour */
+  margin-bottom: 3.5rem;
+  font-style: italic;
+}
+.contact-links { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; }
+.contact-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;   /* ← contact button text size */
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.85rem 1.8rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+.contact-link:hover { background: var(--accent); border-color: var(--accent); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   FOOTER
+   font-size: small footer text size
+   colour: dim cream
+   ══════════════════════════════════════════════════════════════════════ */
+footer {
+  background: #060609;
+  color: rgba(245,240,232,0.25); /* ← footer text colour */
+  text-align: center;
+  padding: 1.8rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;            /* ← footer text size */
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── FORMATTING: animations and scroll reveal, do not edit ── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── FORMATTING: responsive breakpoints, do not edit ── */
+@media (max-width: 850px) {
+  #hero { grid-template-columns:1fr; }
+  .hero-right { display:none; }
+  .hero-left { padding:7rem 1.8rem 4rem; }
+  .about-grid { grid-template-columns:1fr; gap:3rem; }
+  .exp-item { grid-template-columns:1fr; gap:0.5rem; }
+  .edu-grid { grid-template-columns:1fr; }
+  nav { padding:1rem 1.5rem; }
+  .nav-links { gap:1.5rem; }
+  section { padding:5rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  NAV BAR                                                        ║
+     ╠══════════════════════════════════════════════════════════════════╣
+     ║  LOGO MARK: ░░░░ DO NOT EDIT ░░░░ (the SVG below is the logo)  ║
+     ║  NAV NAME:  edit "Igal Sterin" in the <span> below the SVG     ║
+     ║  NAV LINKS: edit the href and link text in the <ul> below       ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<nav>
+  <a href="#hero" class="nav-logo">
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         ░░  LOGO MARK — DO NOT EDIT                               ░░
+         ░░  This is the IS receptor diagram. The I and S are      ░░
+         ░░  font glyphs; the bilayers, zigzags, IC boxes and      ░░
+         ░░  interaction dots are all precisely positioned SVG.    ░░
+         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <svg width="52" height="36" viewBox="0 0 78 46" xmlns="http://www.w3.org/2000/svg">
+      <!-- bilayer 1: outer heads y=10, inner heads y=18 -->
+      <circle cx="2"  cy="10" r="2" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="8"  cy="10" r="2" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="14" cy="10" r="2" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="20" cy="10" r="2" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="26" cy="10" r="2" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="32" cy="10" r="2" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="38" cy="10" r="2" fill="#7ab5c8" opacity="0.8"/>
+      <line x1="2"  y1="12" x2="2"  y2="16" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="8"  y1="12" x2="8"  y2="16" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="14" y1="12" x2="14" y2="16" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="20" y1="12" x2="20" y2="16" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="26" y1="12" x2="26" y2="16" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="32" y1="12" x2="32" y2="16" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="38" y1="12" x2="38" y2="16" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <circle cx="2"  cy="18" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="8"  cy="18" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="14" cy="18" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="20" cy="18" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="26" cy="18" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="32" cy="18" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="38" cy="18" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <!-- bilayer 2: inner heads y=28, outer heads y=36 -->
+      <circle cx="2"  cy="28" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="8"  cy="28" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="14" cy="28" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="20" cy="28" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="26" cy="28" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="32" cy="28" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <circle cx="38" cy="28" r="2" fill="#f5f0e8" opacity="0.18"/>
+      <line x1="2"  y1="30" x2="2"  y2="34" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="8"  y1="30" x2="8"  y2="34" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="14" y1="30" x2="14" y2="34" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="20" y1="30" x2="20" y2="34" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="26" y1="30" x2="26" y2="34" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="32" y1="30" x2="32" y2="34" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <line x1="38" y1="30" x2="38" y2="34" stroke="#f5f0e8" stroke-width="0.7" opacity="0.2"/>
+      <circle cx="2"  cy="36" r="2" fill="#2a5c8a" opacity="0.65"/>
+      <circle cx="8"  cy="36" r="2" fill="#2a5c8a" opacity="0.65"/>
+      <circle cx="14" cy="36" r="2" fill="#2a5c8a" opacity="0.65"/>
+      <circle cx="20" cy="36" r="2" fill="#2a5c8a" opacity="0.65"/>
+      <circle cx="26" cy="36" r="2" fill="#2a5c8a" opacity="0.65"/>
+      <circle cx="32" cy="36" r="2" fill="#2a5c8a" opacity="0.65"/>
+      <circle cx="38" cy="36" r="2" fill="#2a5c8a" opacity="0.65"/>
+      <!-- I receptor: IC box y=2–5, stub y=5–10, zigzag y=10–18 -->
+      <rect x="6" y="2" width="8" height="3" rx="0.8" fill="rgba(122,181,200,0.18)" stroke="#7ab5c8" stroke-width="0.8"/>
+      <line x1="10" y1="5" x2="10" y2="10" stroke="#7ab5c8" stroke-width="1.2" stroke-linecap="round"/>
+      <polyline points="10,10  7,11.5  13,13  7,14.5  13,16  7,17.5  13,18  10,18" stroke="#7ab5c8" stroke-width="0.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="10" y1="20" x2="10" y2="24" stroke="#7ab5c8" stroke-width="1" stroke-dasharray="2.5,2" stroke-linecap="round"/>
+      <text x="10" y="27" font-family="Cormorant Garamond, serif" font-size="10" font-weight="300" text-anchor="middle" fill="#7ab5c8" opacity="0.95">I</text>
+      <!-- S receptor: dashed y=28, zigzag y=28–36, stub y=36–39, IC box y=39–42 -->
+      <text x="29" y="27" font-family="Cormorant Garamond, serif" font-size="10" font-weight="300" text-anchor="middle" fill="#2a5c8a" opacity="0.95">S</text>
+      <line x1="29" y1="28" x2="29" y2="28" stroke="#2a5c8a" stroke-width="1" stroke-dasharray="2.5,2" stroke-linecap="round"/>
+      <polyline points="29,28  26,29.5  32,31  26,32.5  32,34  26,35.5  32,36  29,36" stroke="#2a5c8a" stroke-width="0.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="29" y1="36" x2="29" y2="39" stroke="#2a5c8a" stroke-width="1.2" stroke-linecap="round"/>
+      <rect x="25" y="39" width="8" height="3" rx="0.8" fill="rgba(42,92,138,0.22)" stroke="#2a5c8a" stroke-width="0.8"/>
+      <!-- interaction dots -->
+      <circle cx="18" cy="23" r="1.2" fill="#7ab5c8" opacity="0.5"/>
+      <circle cx="20" cy="21" r="0.9" fill="#7ab5c8" opacity="0.35"/>
+      <circle cx="20" cy="25" r="1.2" fill="#7ab5c8" opacity="0.5"/>
+    </svg>
+    <!-- ░░░░░░░░░░░░░░░░░░░░ END LOGO MARK ░░░░░░░░░░░░░░░░░░░░░░░░ -->
+
+    <!-- ▼▼ EDIT: your name as it appears in the nav bar ▼▼ -->
+    <span style="font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,240,232,0.8); margin-left:0.8rem;">Igal Sterin</span>
+
+  </a>
+
+  <!-- ▼▼ EDIT: nav link labels and anchor targets ▼▼ -->
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  HERO SECTION                                                   ║
+     ╠══════════════════════════════════════════════════════════════════╣
+     ║  LOGO LOCKUP: ░░░░ DO NOT EDIT ░░░░ (large SVG below)         ║
+     ║    — viewBox shift (-140) centres the mark over the text        ║
+     ║    — the I and S are font glyphs; all structure is SVG          ║
+     ║  EDITABLE TEXT in the lockup SVG:                               ║
+     ║    • "IGAL STERIN"         → x=104 y=68  font-size=34          ║
+     ║    • "MOLECULAR BIOLOGIST" → x=105 y=87  font-size=7.5         ║
+     ║    • "CELL CULTURE · ASSAY DEVELOPMENT" → x=105 y=103 size=7   ║
+     ║  BIO PARAGRAPH: edit the text inside the <p> below the SVG     ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<section id="hero">
+  <div class="hero-left" style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%">
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+         ░░  HERO LOGO LOCKUP — MOSTLY DO NOT EDIT                 ░░
+         ░░                                                         ░░
+         ░░  The SVG coordinate system:                            ░░
+         ░░  viewBox="-140 0 560 148"                              ░░
+         ░░    -140 = horizontal offset to centre mark over text   ░░
+         ░░     560 = viewport width                               ░░
+         ░░     148 = viewport height                              ░░
+         ░░                                                         ░░
+         ░░  SAFE TO EDIT (text content only):                     ░░
+         ░░    x=104 y=68  → your name                            ░░
+         ░░    x=105 y=87  → title line 1                         ░░
+         ░░    x=105 y=103 → title line 2                         ░░
+         ░░                                                         ░░
+         ░░  DO NOT EDIT: all circles, lines, polylines, rects    ░░
+         ░░  (these are the bilayers, zigzags, IC boxes)           ░░
+         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <svg width="560" height="148" viewBox="-140 0 560 148" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- bilayer 1 outer heads y=18, r=2.8 — DO NOT EDIT -->
+      <circle cx="3"  cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="9"  cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="15" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="21" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="27" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="33" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="39" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="45" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="51" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="57" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="63" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="69" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <circle cx="75" cy="18" r="2.8" fill="#7ab5c8" opacity="0.8"/>
+      <line x1="3"  y1="21" x2="3"  y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="9"  y1="21" x2="9"  y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="15" y1="21" x2="15" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="21" y1="21" x2="21" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="27" y1="21" x2="27" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="33" y1="21" x2="33" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="39" y1="21" x2="39" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="45" y1="21" x2="45" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="51" y1="21" x2="51" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="57" y1="21" x2="57" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="63" y1="21" x2="63" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="69" y1="21" x2="69" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="75" y1="21" x2="75" y2="27" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <!-- inner heads y=30 — DO NOT EDIT -->
+      <circle cx="3"  cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="9"  cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="15" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="21" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="27" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="33" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="39" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="45" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="51" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="57" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="63" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="69" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="75" cy="30" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <!-- bilayer 2 inner heads y=118 — DO NOT EDIT -->
+      <circle cx="3"  cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="9"  cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="15" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="21" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="27" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="33" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="39" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="45" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="51" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="57" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="63" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="69" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <circle cx="75" cy="118" r="2.8" fill="#f5f0e8" opacity="0.22"/>
+      <line x1="3"  y1="121" x2="3"  y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="9"  y1="121" x2="9"  y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="15" y1="121" x2="15" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="21" y1="121" x2="21" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="27" y1="121" x2="27" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="33" y1="121" x2="33" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="39" y1="121" x2="39" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="45" y1="121" x2="45" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="51" y1="121" x2="51" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="57" y1="121" x2="57" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="63" y1="121" x2="63" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="69" y1="121" x2="69" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <line x1="75" y1="121" x2="75" y2="127" stroke="#f5f0e8" stroke-width="0.9" opacity="0.2"/>
+      <!-- outer heads y=130 — DO NOT EDIT -->
+      <circle cx="3"  cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="9"  cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="15" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="21" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="27" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="33" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="39" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="45" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="51" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="57" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="63" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="69" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <circle cx="75" cy="130" r="2.8" fill="#2a5c8a" opacity="0.7"/>
+      <!-- RECEPTOR I structure — DO NOT EDIT -->
+      <rect x="11" y="6" width="14" height="5" rx="1.2" fill="rgba(122,181,200,0.18)" stroke="#7ab5c8" stroke-width="1.2"/>
+      <line x1="18" y1="11" x2="18" y2="18" stroke="#7ab5c8" stroke-width="1.6" stroke-linecap="round"/>
+      <polyline points="18,18  13,20  23,22  13,24  23,26  13,28  23,30  18,30" stroke="#7ab5c8" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="18" y1="33" x2="18" y2="50" stroke="#7ab5c8" stroke-width="1.6" stroke-dasharray="4,3" stroke-linecap="round"/>
+      <!-- RECEPTOR I letter — font glyph, DO NOT EDIT coordinates, text content is "I" -->
+      <text x="18" y="105" font-family="Cormorant Garamond, serif" font-size="74" font-weight="300" text-anchor="middle" fill="#7ab5c8" opacity="0.95">I</text>
+      <!-- RECEPTOR S letter — font glyph, DO NOT EDIT coordinates, text content is "S" -->
+      <text x="57" y="105" font-family="Cormorant Garamond, serif" font-size="74" font-weight="300" text-anchor="middle" fill="#2a5c8a" opacity="0.95">S</text>
+      <!-- RECEPTOR S structure — DO NOT EDIT -->
+      <line x1="57" y1="108" x2="57" y2="115" stroke="#2a5c8a" stroke-width="1.6" stroke-dasharray="4,3" stroke-linecap="round"/>
+      <polyline points="57,118  52,120  62,122  52,124  62,126  52,128  62,130  57,130" stroke="#2a5c8a" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="57" y1="130" x2="57" y2="137" stroke="#2a5c8a" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="50" y="137" width="14" height="5" rx="1.2" fill="rgba(42,92,138,0.22)" stroke="#2a5c8a" stroke-width="1.2"/>
+      <!-- interaction dots — DO NOT EDIT -->
+      <circle cx="34" cy="74" r="2.2" fill="#7ab5c8" opacity="0.5"/>
+      <circle cx="38" cy="68" r="1.6" fill="#7ab5c8" opacity="0.35"/>
+      <circle cx="38" cy="80" r="2.2" fill="#7ab5c8" opacity="0.5"/>
+      <!-- divider line between mark and text — DO NOT EDIT -->
+      <line x1="92" y1="22" x2="92" y2="126" stroke="#f5f0e8" stroke-width="0.5" opacity="0.14"/>
+
+      <!-- ▼▼ EDIT: your name (font Cormorant Garamond, size 34) ▼▼ -->
+      <text x="104" y="68" font-family="Cormorant Garamond, serif" font-size="34" font-weight="300" fill="#f5f0e8" letter-spacing="2">IGAL STERIN</text>
+
+      <!-- ▼▼ EDIT: title line 1 (font Space Mono, size 7.5) ▼▼ -->
+      <text x="105" y="87" font-family="Space Mono, monospace" font-size="7.5" fill="#7ab5c8" letter-spacing="2.2" opacity="0.85">MOLECULAR BIOLOGIST</text>
+
+      <!-- ▼▼ EDIT: title line 2 (font Space Mono, size 7) ▼▼ -->
+      <text x="105" y="103" font-family="Space Mono, monospace" font-size="7" fill="#2a5c8a" letter-spacing="1.8" opacity="0.75">CELL CULTURE  ·  ASSAY DEVELOPMENT</text>
+
+    </svg>
+    <!-- ░░░░░░░░░░░░░░░░░░░░ END HERO LOGO LOCKUP ░░░░░░░░░░░░░░░░░ -->
+
+    <!-- ▼▼ EDIT: hero bio paragraph — the italic text below the lockup ▼▼ -->
+    <p style="max-width:560px; text-align:center; font-size:1.05rem; font-weight:300; color:rgba(245,240,232,0.55); line-height:1.85; font-style:italic; font-family:'Cormorant Garamond',Georgia,serif;">
+      A PhD-trained molecular biologist specializing in assay development, cell-based workflows, and validation — with a career spanning academic neuroscience, synthetic immunotherapy, and preclinical industry research.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  ABOUT SECTION                                                  ║
+     ║  Edit: section label, heading, body paragraphs, stat numbers    ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<section id="about">
+  <div class="section-inner">
+    <!-- ▼▼ EDIT: small label above heading ▼▼ -->
+    <p class="section-label reveal">About</p>
+    <!-- ▼▼ EDIT: section heading — wrap one word in <em> for italic accent ▼▼ -->
+    <h2 class="section-title reveal">At the frontier of <em>biological discovery</em></h2>
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <!-- ▼▼ EDIT: about body paragraphs ▼▼ -->
+        <p>
+          I have cultured cells for the entirety of my scientific career — my graduate school application
+          letter began with "I love cells," and that hasn't changed. From primary human T cells and cancer
+          cell lines at UCSF, to primary rodent neuronal and astrocyte cultures during my PhD, to testicular
+          cell isolations at Paterna Biosciences, cell culture is the foundation of everything I do.
+        </p>
+        <p>
+          My expertise centers on assay development and validation. I've independently designed and
+          standardized complex multi-parameter MACS and FACS-based isolation protocols, developed
+          cell-based drug screening platforms in neuronal cultures, and engineered logic-gated CAR-T
+          circuits validated through 96-well flow cytometry assays. At Paterna, this work fed directly
+          into a GMP-compliant validation study and procedural standards now under patent filing.
+        </p>
+        <p>
+          I'm equally comfortable at the wet-lab/computational interface — I've built R-based automation
+          scripts for flow cytometry and imaging data processing, worked closely with bioinformatics
+          specialists on single-cell sequencing projects, and contributed as a scientific writer to four
+          funded grant applications including an R01 and R21. Rigorous science and clear communication
+          are inseparable to me.
+        </p>
+      </div>
+      <div class="about-stats reveal">
+        <!-- ▼▼ EDIT: stat number and label for each item ▼▼ -->
+        <div class="stat-item">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Peer-Reviewed Publications</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years Research Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Funded Grant Contributions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">PhD</div>
+          <div class="stat-label">Neurobiology, U of Utah</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  EXPERIENCE SECTION                                             ║
+     ║  Each <div class="exp-item"> is one job entry.                  ║
+     ║  Edit: exp-year (dates + type), exp-title, exp-org, bullets     ║
+     ║  To add a job: copy one exp-item block and paste before </div>  ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label reveal">Experience</p>
+    <h2 class="section-title reveal">Research <em>career</em></h2>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-year">2024–2026<br>Industry</div>  <!-- ▼ dates + type ▼ -->
+        <div class="exp-content">
+          <div class="exp-title">Senior Scientist</div>                           <!-- ▼ job title ▼ -->
+          <div class="exp-org">Paterna Biosciences · Salt Lake City, UT</div>     <!-- ▼ organisation ▼ -->
+          <ul class="exp-bullets">
+            <!-- ▼▼ EDIT: bullet points ▼▼ -->
+            <li>Standardized complex, multi-parameter MACS and FACS panels to achieve high-purity testicular cell populations for downstream therapeutic applications.</li>
+            <li>Authored and spearheaded novel procedural standards currently under patent filing to protect core company IP.</li>
+            <li>Contributed to a GMP-compliant validation study by drafting and revising technical protocols and supporting product test runs for final isolation stages.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-year">2018–2024<br>Academic</div>
+        <div class="exp-content">
+          <div class="exp-title">Graduate Research Assistant</div>
+          <div class="exp-org">University of Utah · Salt Lake City, UT</div>
+          <ul class="exp-bullets">
+            <li>Dissertation: "Characterizing the Neuronal Extracellular Matrix (nECM) Via Genetically Encoded HaloTag-Hapln1 Fusion."</li>
+            <li>Constructed and implemented novel genetic tools for high-fidelity nECM visualization in vivo/vitro.</li>
+            <li>Engineered a cell-based assay in neuronal cultures adaptable for drug screening.</li>
+            <li>Directed cross-functional research initiatives to decipher the role of nECMs in neurological disorders, including epilepsy and PTSD.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-year">2016–2018<br>Academic</div>
+        <div class="exp-content">
+          <div class="exp-title">Research Technician</div>
+          <div class="exp-org">Wendell Lim Lab · UCSF · San Francisco, CA</div>
+          <ul class="exp-bullets">
+            <li>Designed and tested genetic circuits in primary human T cells for adoptive immunotherapies.</li>
+            <li>Maintained cell lines, plasmid stocks, and managed a tissue culture room.</li>
+            <li>Communicated effectively to manage and prioritize multiple concurrent projects.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-year">2015<br>Academic</div>
+        <div class="exp-content">
+          <div class="exp-title">Intern</div>
+          <div class="exp-org">Wendell Lim Lab · UCSF · San Francisco, CA</div>
+          <ul class="exp-bullets">
+            <li>Optimized a synthetic signaling system based on Notch in mouse embryonic stem cells.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-year">2012–2014<br>Clinical</div>
+        <div class="exp-content">
+          <div class="exp-title">Research Assistant</div>
+          <div class="exp-org">Stone Research Center · Vancouver General Hospital · BC, Canada</div>
+          <ul class="exp-bullets">
+            <li>Aggregated and organized clinical data on treating kidney stones.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  SKILLS SECTION                                                 ║
+     ║  Each <div class="skill-card"> is one category.                 ║
+     ║  Edit: skill-card-title (category name), skill-tag items        ║
+     ║  To add a skill: add <span class="skill-tag">Name</span>        ║
+     ║  To add a category: copy a skill-card block                     ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label reveal">Technical Expertise</p>
+    <h2 class="section-title reveal">A broad <em>toolkit</em></h2>
+    <div class="skills-grid reveal">
+
+      <div class="skill-card">
+        <div class="skill-card-title">Cell Culture</div>  <!-- ▼ category name ▼ -->
+        <div class="skill-tags">
+          <!-- ▼▼ EDIT: add/remove/rename skill tags ▼▼ -->
+          <span class="skill-tag">Mammalian Cell Lines</span>
+          <span class="skill-tag">Primary Neuronal Culture</span>
+          <span class="skill-tag">Immune Cell Culture</span>
+          <span class="skill-tag">Testicular Cell Culture</span>
+          <span class="skill-tag">BSL2</span>
+          <span class="skill-tag">Transfection</span>
+          <span class="skill-tag">Transduction</span>
+          <span class="skill-tag">MACS</span>
+          <span class="skill-tag">Live Imaging</span>
+          <span class="skill-tag">Assay Development</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Technical Assays</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ICC / IHC</span>
+          <span class="skill-tag">qPCR</span>
+          <span class="skill-tag">Western Blot</span>
+          <span class="skill-tag">Confocal Microscopy</span>
+          <span class="skill-tag">Flow Cytometry</span>
+          <span class="skill-tag">Single Cell Sorting</span>
+          <span class="skill-tag">ELISA</span>
+          <span class="skill-tag">Cytotoxicity Assays</span>
+          <span class="skill-tag">Immune Assays</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Synthetic Biology</div>
+        <div class="skill-tags">
+          <span class="skill-tag">CRISPR Design</span>
+          <span class="skill-tag">Molecular Cloning</span>
+          <span class="skill-tag">Vector Design</span>
+          <span class="skill-tag">Fusion Proteins</span>
+          <span class="skill-tag">Reporter Assays</span>
+          <span class="skill-tag">AAV Production</span>
+          <span class="skill-tag">Lentivirus Production</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Software & Analysis</div>
+        <div class="skill-tags">
+          <span class="skill-tag">FlowJo</span>
+          <span class="skill-tag">Imaris</span>
+          <span class="skill-tag">LASX</span>
+          <span class="skill-tag">Zeiss Blue</span>
+          <span class="skill-tag">GraphPad Prism</span>
+          <span class="skill-tag">SnapGene</span>
+          <span class="skill-tag">FIJI</span>
+          <span class="skill-tag">Ilastik</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">R</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Scientific Communication</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Manuscript Preparation</span>
+          <span class="skill-tag">Grant Writing</span>
+          <span class="skill-tag">SOP Documentation</span>
+          <span class="skill-tag">Patent Documentation</span>
+          <span class="skill-tag">Oral Presentations</span>
+          <span class="skill-tag">Poster Presentations</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">In Vivo</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Mouse Handling</span>
+          <span class="skill-tag">Mouse Injection</span>
+          <span class="skill-tag">Tissue Dissection</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  PUBLICATIONS SECTION                                           ║
+     ║  Each <div class="pub-item"> is one paper or presentation.      ║
+     ║  Edit: pub-year, pub-title, pub-authors, pub-journal            ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<section id="publications">
+  <div class="section-inner">
+    <p class="section-label reveal">Research Output</p>
+    <h2 class="section-title reveal">Selected <em>publications</em></h2>
+    <div class="pub-list">
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2024</div>  <!-- ▼ year ▼ -->
+        <!-- ▼▼ EDIT: paper title, authors, journal ▼▼ -->
+        <div class="pub-title">Dynamic organization of neuronal extracellular matrix revealed by HaloTag-HAPLN1</div>
+        <div class="pub-authors">Sterin, I., Niazi, A., Kim, J., Park, J., Park, S.</div>
+        <div class="pub-journal">Journal of Neuroscience</div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2024</div>
+        <div class="pub-title">Microvilli regulate the release modes of alpha-tectorin to organize the domain-specific matrix architecture of the tectorial membrane</div>
+        <div class="pub-authors">Niazi, A., Kim, J.A., Kim, D.K., Lu, D., Sterin, I., Park, J., Park, S.</div>
+        <div class="pub-journal">Developmental Cell</div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2022</div>
+        <div class="pub-title">Neuronal Activity Reporters as Drug Screening Platforms</div>
+        <div class="pub-authors">Sterin I, Santos AC, Park S.</div>
+        <div class="pub-journal">Micromachines</div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2020</div>
+        <div class="pub-title">Ultraprecise T Cell recognition programs designed by transcriptionally linked multiple receptors</div>
+        <div class="pub-authors">Williams J.Z., Allen, G.M., Shah, D., Sterin, I.S., et al.</div>
+        <div class="pub-journal">Science</div>
+      </div>
+
+    </div>
+
+    <!-- ▼▼ EDIT: presentations heading and entries below ▼▼ -->
+    <h3 class="section-title reveal" style="font-size:2rem; margin-top:4rem;">Conference <em>presentations</em></h3>
+    <div class="pub-list">
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2023 · Oral</div>
+        <div class="pub-title">Development of the Extracellular Matrix of the Brain</div>
+        <div class="pub-authors">American Society for Matrix Biology Meeting · Salt Lake City, UT</div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2023 · Poster</div>
+        <div class="pub-title">Development of the Extracellular Matrix of the Brain</div>
+        <div class="pub-authors">American Society for Matrix Biology Meeting · Salt Lake City, UT</div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2022 · Poster</div>
+        <div class="pub-title">Revealing Novel Architectures in the Extracellular Matrix of the Brain</div>
+        <div class="pub-authors">Society for Neuroscience · San Diego, CA</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  EDUCATION SECTION                                              ║
+     ║  Each <div class="edu-card"> is one degree.                     ║
+     ║  Edit: edu-degree, edu-field, edu-school, edu-year              ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<section id="education">
+  <div class="section-inner">
+    <p class="section-label reveal">Academic Background</p>
+    <h2 class="section-title reveal">Education & <em>training</em></h2>
+    <div class="edu-grid">
+
+      <div class="edu-card reveal">
+        <!-- ▼▼ EDIT: degree, field, institution, years ▼▼ -->
+        <div class="edu-degree">Doctor of Philosophy</div>
+        <div class="edu-field">Neurobiology</div>
+        <div class="edu-school">University of Utah School of Medicine</div>
+        <div class="edu-year">2018 – 2024</div>
+      </div>
+
+      <div class="edu-card reveal">
+        <div class="edu-degree">Bachelor of Science</div>
+        <div class="edu-field">Psychology</div>
+        <div class="edu-school">University of British Columbia</div>
+        <div class="edu-year">2010 – 2014</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  CONTACT SECTION                                                ║
+     ║  Edit: section label, heading, subtext, contact links           ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<section id="contact">
+  <div class="section-inner">
+    <!-- ▼▼ EDIT: contact section label, heading, subheading ▼▼ -->
+    <p class="section-label reveal">Get In Touch</p>
+    <h2 class="contact-heading reveal">Let's work<br><em>together.</em></h2>
+    <p class="contact-sub reveal">Open to new opportunities in research, biotech, and beyond.</p>
+    <div class="contact-links reveal">
+      <!-- ▼▼ EDIT: email address and location (href and visible text) ▼▼ -->
+      <a href="mailto:igalsterin@gmail.com" class="contact-link">igalsterin&#64;gmail.com</a>
+      <a href="https://www.google.com/maps/place/Salt+Lake+City,+UT" target="_blank" class="contact-link">Salt Lake City, UT</a>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  FOOTER — edit the copyright name and tagline                   ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<footer>
+  <!-- ▼▼ EDIT: your name and tagline ▼▼ -->
+  &copy; 2026 Igal Sterin &nbsp;&middot;&nbsp; Molecular Biologist &amp; Cell Culture Specialist
+</footer>
+
+<!-- ── FORMATTING: scroll behaviour scripts, do not edit ── -->
+<script>
+  const nav = document.querySelector('nav');
+  const heroEl = document.querySelector('#hero');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { nav.classList.remove('light'); }
+      else { nav.classList.add('light'); }
+    });
+  }, { threshold: 0.1 });
+  navObserver.observe(heroEl);
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0, rootMargin: '0px' });
+  reveals.forEach(el => observer.observe(el));
+  setTimeout(() => { reveals.forEach(el => el.classList.add('visible')); }, 600);
+
+  document.querySelectorAll('.skills-grid, .pub-list, .edu-grid, .exp-list').forEach(container => {
+    Array.from(container.children).forEach((child, i) => {
+      child.style.transitionDelay = `${i * 0.07}s`;
+    });
+  });
+</script>
+</body>
+</html>
